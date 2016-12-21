@@ -8,6 +8,7 @@ import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.functions.Func5;
 
+@SuppressWarnings("unused")
 public final class RxFuncs {
     public static final Func1<Object, Boolean> nullFilter = new Func1<Object, Boolean>() {
         @Override

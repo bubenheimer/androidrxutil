@@ -8,6 +8,7 @@ import android.support.v4.util.Pair;
 
 import rx.functions.Func2;
 
+@SuppressWarnings("unused")
 public final class PairFunc<T, U> implements Func2<T, U, Pair<T, U>> {
     @Override
     public Pair<T, U> call(final T t, final U u) {

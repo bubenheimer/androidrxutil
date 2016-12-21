@@ -12,6 +12,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public final class CachedMap<T, R> implements Observable.Operator<R, T> {
     private static final Object NONE = new Object();
 
@@ -25,6 +26,7 @@ public final class CachedMap<T, R> implements Observable.Operator<R, T> {
     /**
      * @param mapFunc function whose most recent invocation is to be cached
      */
+    @SuppressWarnings("unused")
     public CachedMap(final @NonNull Func1<T, R> mapFunc) {
         this.mapFunc = mapFunc;
     }

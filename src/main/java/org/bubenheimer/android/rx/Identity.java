@@ -6,6 +6,7 @@ package org.bubenheimer.android.rx;
 
 import rx.functions.Func1;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public final class Identity implements Func1 {
     public static final Identity INSTANCE = new Identity();
 
