@@ -22,7 +22,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0-beta1'
+        classpath 'com.android.tools.build:gradle:2.3.0'
     }
 }
 
@@ -60,14 +60,16 @@ android {
     }
 
     dependencies {
-        String rxJavaVersion = '1.2.3'
+        String rxJavaVersion = '1.2.7'
 
         compile 'org.bubenheimer:androidutil:1.0-SNAPSHOT'
 
-        compile 'com.android.support:support-annotations:25.1.0'
+        compile 'com.android.support:support-annotations:25.2.0'
 
         compile "io.reactivex:rxjava:${rxJavaVersion}"
         testCompile "io.reactivex:rxjava:${rxJavaVersion}"
+
+        compile 'io.reactivex:rxandroid:1.2.1'
 
         testCompile 'com.jakewharton.rxrelay:rxrelay:1.2.0'
 
