@@ -9,7 +9,7 @@ import org.bubenheimer.android.log.Log;
 import rx.Subscriber;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class DummySubscriber extends Subscriber {
+public class DummySubscriber<T> extends Subscriber<T> {
     private static final String TAG = DummySubscriber.class.getSimpleName();
 
     @Override
