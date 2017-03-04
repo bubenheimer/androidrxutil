@@ -7,14 +7,14 @@ package org.bubenheimer.android.rx;
 import rx.functions.Func1;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class Identity implements Func1 {
-    public static final Identity INSTANCE = new Identity();
+public final class Identity<T> implements Func1<T,T> {
+    public static final Identity<?> INSTANCE = new Identity<>();
 
     @Override
-    public Object call(final Object obj) {
+    public T call(final T obj) {
         return obj;
     }
 
-    private Identity() {
+    public Identity() {
     }
 }
