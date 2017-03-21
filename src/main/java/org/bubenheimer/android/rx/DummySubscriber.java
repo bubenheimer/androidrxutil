@@ -23,7 +23,7 @@ public class DummySubscriber<T> extends Subscriber<T> {
     }
 
     @Override
-    public void onNext(final Object o) {
+    public void onNext(final T o) {
         Log.v(TAG, "onNext(", o, ")");
     }
 }

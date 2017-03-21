@@ -63,7 +63,7 @@ android {
 
         compile 'org.bubenheimer:androidutil:1.0-SNAPSHOT'
 
-        compile 'com.android.support:support-annotations:25.2.0'
+        compile 'com.android.support:support-annotations:25.3.0'
 
         compile "io.reactivex:rxjava:${rxJavaVersion}"
         testCompile "io.reactivex:rxjava:${rxJavaVersion}"
