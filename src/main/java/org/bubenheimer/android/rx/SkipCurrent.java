@@ -19,12 +19,7 @@ public final class SkipCurrent<T> implements Observable.Transformer<T,T> {
         //noinspection unchecked
         final T semaphore = (T) NONE;
         return Observable.merge(observable, Observable.just(semaphore))
-                .skipWhile(new Func1<T, Boolean>() {
-                    @Override
-                    public Boolean call(final T item) {
-                        return item != semaphore;
-                    }
-                })
+                .skipWhile(item -> item != semaphore)
                 .skip(1);
     }
 }

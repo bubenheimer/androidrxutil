@@ -74,7 +74,7 @@ public final class SkipCurrentTest {
         final TestSubscriber<Integer> subscriber = new TestSubscriber<>();
         final BehaviorRelay<Integer> relay = BehaviorRelay.create(123);
         final Observable<Integer> observable =
-                relay.compose(new SkipCurrent<Integer>());
+                relay.compose(new SkipCurrent<>());
         observable.subscribe(subscriber);
 
         subscriber.assertNoValues();
@@ -88,7 +88,7 @@ public final class SkipCurrentTest {
         final BehaviorRelay<Integer> relay = BehaviorRelay.create(123);
         relay.call(456);
         final Observable<Integer> observable =
-                relay.compose(new SkipCurrent<Integer>());
+                relay.compose(new SkipCurrent<>());
         observable.subscribe(subscriber);
 
         subscriber.assertNoValues();
@@ -101,7 +101,7 @@ public final class SkipCurrentTest {
         final TestSubscriber<Integer> subscriber = new TestSubscriber<>();
         final BehaviorRelay<Integer> relay = BehaviorRelay.create(123);
         final Observable<Integer> observable =
-                relay.compose(new SkipCurrent<Integer>());
+                relay.compose(new SkipCurrent<>());
         observable.subscribe(subscriber);
 
         subscriber.assertNoValues();
@@ -117,7 +117,7 @@ public final class SkipCurrentTest {
         final TestSubscriber<Integer> subscriber = new TestSubscriber<>();
         final BehaviorRelay<Integer> relay = BehaviorRelay.create(123);
         final Observable<Integer> observable =
-                relay.compose(new SkipCurrent<Integer>());
+                relay.compose(new SkipCurrent<>());
         observable.subscribe(subscriber);
 
         subscriber.assertNoValues();
@@ -135,7 +135,7 @@ public final class SkipCurrentTest {
         final BehaviorRelay<Integer> relay = BehaviorRelay.create(123);
         relay.call(456);
         final Observable<Integer> observable =
-                relay.compose(new SkipCurrent<Integer>());
+                relay.compose(new SkipCurrent<>());
         observable.subscribe(subscriber);
 
         subscriber.assertNoValues();
@@ -154,7 +154,7 @@ public final class SkipCurrentTest {
         relay.call(123);
         relay.call(456);
         final Observable<Integer> observable =
-                relay.compose(new SkipCurrent<Integer>());
+                relay.compose(new SkipCurrent<>());
         observable.subscribe(subscriber);
 
         subscriber.assertNoValues();

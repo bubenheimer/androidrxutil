@@ -10,29 +10,14 @@ import rx.functions.Func5;
 
 @SuppressWarnings("unused")
 public final class RxFuncs {
-    public static final Func1<Object, Boolean> nullFilter = new Func1<Object, Boolean>() {
-        @Override
-        public Boolean call(final Object o) {
-            return o != null;
-        }
-    };
+    @SuppressWarnings("Convert2MethodRef")
+    public static final Func1<Object, Boolean> nullFilter = o -> o != null;
 
     public static final Func2<Object, Object, Void> nullFunc2 =
-            new Func2<Object, Object, Void>() {
-                @Override
-                public Void call(final Object o1, final Object o2) {
-                    return null;
-                }
-            };
+            (o1, o2) -> null;
 
     public static final Func5<Object, Object, Object, Object, Object, Void> nullFunc5 =
-            new Func5<Object, Object, Object, Object, Object, Void>() {
-                @Override
-                public Void call(final Object o1, final Object o2, final Object o3, final Object o4,
-                                 final Object o5) {
-                    return null;
-                }
-    };
+            (o1, o2, o3, o4, o5) -> null;
 
     private RxFuncs() {
         throw new UnsupportedOperationException();
