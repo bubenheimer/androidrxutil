@@ -5,8 +5,7 @@
 package org.bubenheimer.android.rx;
 
 import android.support.annotation.NonNull;
-
-import org.bubenheimer.android.Equals;
+import android.support.v4.util.ObjectsCompat;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -46,7 +45,7 @@ public final class CachedMap<T, R> implements Observable.Operator<R, T> {
 
             @Override
             public void onNext(final T in) {
-                if (Equals.equals(in, lastIn)) {
+                if (ObjectsCompat.equals(in, lastIn)) {
                     subscriber.onNext(lastOut);
                 } else {
                     lastOut = CachedMap.this.mapFunc.call(in);
