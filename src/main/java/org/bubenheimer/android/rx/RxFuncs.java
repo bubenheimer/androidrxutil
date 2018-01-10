@@ -11,7 +11,10 @@ import rx.functions.Func5;
 @SuppressWarnings("unused")
 public final class RxFuncs {
     @SuppressWarnings("Convert2MethodRef")
-    public static final Func1<Object, Boolean> nullFilter = o -> o != null;
+    public static final Func1<Object, Boolean> nullFilter = o -> o == null;
+
+    @SuppressWarnings("Convert2MethodRef")
+    public static final Func1<Object, Boolean> notNullFilter = o -> o != null;
 
     public static final Func2<Object, Object, Void> nullFunc2 =
             (o1, o2) -> null;
