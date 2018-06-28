@@ -21,7 +21,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-beta01'
+        classpath 'com.android.tools.build:gradle:3.2.0-beta02'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -32,30 +33,12 @@ repositories {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
+apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'org.bubenheimer'
 version = '1.0-SNAPSHOT'
 
 String rxJavaVersion = '2.1.16'
-
-publishing {
-    publications {
-        library(MavenPublication) {
-            artifact bundleReleaseAar
-
-            pom.withXml {
-                def deps = asNode().appendNode('dependencies')
-
-                //Make Scheduler super class available to users
-                def rxjava = deps.appendNode('dependency')
-                rxjava.appendNode('groupId', 'io.reactivex.rxjava2')
-                rxjava.appendNode('artifactId', 'rxjava')
-                rxjava.appendNode('version', rxJavaVersion)
-            }
-        }
-    }
-}
 
 android {
     compileSdkVersion 28
@@ -93,7 +76,8 @@ android {
         implementation 'com.android.support:support-compat:28.0.0-alpha1'
 
         implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-        implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+        //Make Scheduler super class available to users
+        api "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 
         testImplementation 'junit:junit:4.12'
     }
