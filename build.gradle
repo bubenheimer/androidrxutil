@@ -21,7 +21,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-rc02'
+        classpath 'com.android.tools.build:gradle:3.2.0-rc03'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -71,7 +71,7 @@ android {
         implementation 'org.bubenheimer:androidutil:1.0-SNAPSHOT'
         implementation 'org.bubenheimer:javautil:1.0-SNAPSHOT'
 
-        implementation 'com.android.support:support-compat:28.0.0-beta01'
+        implementation 'com.android.support:support-compat:28.0.0-rc01'
 
         implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
         //Make Scheduler super class available to users
