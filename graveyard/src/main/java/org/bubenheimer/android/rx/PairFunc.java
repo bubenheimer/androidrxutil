@@ -4,7 +4,7 @@
 
 package org.bubenheimer.android.rx;
 
-import android.support.v4.util.Pair;
+import androidx.core.util.Pair;
 
 import rx.functions.Func2;
 

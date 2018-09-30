@@ -4,8 +4,8 @@
 
 package org.bubenheimer.android.rx;
 
-import android.support.annotation.NonNull;
-import android.support.v4.util.ObjectsCompat;
+import androidx.annotation.NonNull;
+import androidx.core.util.ObjectsCompat;
 
 import rx.Observable;
 import rx.Subscriber;
