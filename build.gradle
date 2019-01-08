@@ -79,6 +79,8 @@ android {
 }
 
 dependencies {
+    String archCompLifecycleVersion = '2.0.0'
+
     errorprone 'com.google.errorprone:error_prone_core:2.3.2'
     //noinspection GradleDynamicVersion
     errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'
@@ -88,11 +90,16 @@ dependencies {
 
     implementation 'androidx.core:core:1.0.1'
 
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation "androidx.lifecycle:lifecycle-common-java8:$archCompLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$archCompLifecycleVersion"
+
     //Use api to make Scheduler super class available to users
     api 'io.reactivex.rxjava2:rxjava:2.2.5'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.google.guava:guava:27.0.1-android'
 
     testImplementation 'junit:junit:4.12'
 }
