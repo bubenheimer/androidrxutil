@@ -44,7 +44,7 @@ fun <T> LiveData<T>.nonNull(): LiveData<T> {
 
 fun <T> LiveData<T>.withDefault(defaultValue: T) = object : MediatorLiveData<T>() {
     init {
-        addSource(this, this::setValue)
+        addSource(this@withDefault, this::setValue)
     }
 
     override fun getValue() = super.getValue() ?: defaultValue
