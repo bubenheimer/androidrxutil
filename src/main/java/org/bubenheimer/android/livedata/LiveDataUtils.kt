@@ -42,10 +42,11 @@ fun <T> LiveData<T>.nonNull(): LiveData<T> {
     return filter { it != null }
 }
 
-fun <T> LiveData<T>.withDefault(defaultValue: T) = object : MediatorLiveData<T>() {
+fun <T> LiveData<T>.withDefault(defaultValue: T) =
+        Transformations.distinctUntilChanged(object : MediatorLiveData<T>() {
     init {
         addSource(this@withDefault, this::setValue)
     }
 
     override fun getValue() = super.getValue() ?: defaultValue
-}
+})
