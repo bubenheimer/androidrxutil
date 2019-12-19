@@ -24,13 +24,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
-import com.google.common.base.Optional
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Observable
 import org.bubenheimer.android.threading.onMainThread
+import java.util.*
 
+@Suppress("unused")
 fun <T> Observable<Optional<T>>.toNullLiveData(): LiveData<T> =
-        Transformations.map(toLiveData(), Optional<T>::orNull)
+        Transformations.map(toLiveData()) { it.orElse(null) }
 
 fun <T> Observable<T>.toLiveData(): LiveData<T> =
         LiveDataReactiveStreams.fromPublisher(toFlowable(BackpressureStrategy.LATEST))
@@ -48,6 +49,7 @@ fun <T> LiveData<T>.filter(predicate: (T?) -> Boolean): LiveData<T> {
     return result
 }
 
+@Suppress("unused")
 @MainThread
 fun <T> LiveData<T>.nonNull(): LiveData<T> {
     check(onMainThread())
@@ -55,6 +57,7 @@ fun <T> LiveData<T>.nonNull(): LiveData<T> {
     return filter { it != null }
 }
 
+@Suppress("unused")
 fun <T> LiveData<T>.withDefault(defaultValue: T) =
         Transformations.distinctUntilChanged(object : MediatorLiveData<T>() {
     init {

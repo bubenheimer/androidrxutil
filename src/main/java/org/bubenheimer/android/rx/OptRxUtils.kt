@@ -19,10 +19,12 @@
 
 package org.bubenheimer.android.rx
 
-import com.google.common.base.Optional
 import io.reactivex.Observable
+import java.util.*
 
+@Suppress("unused")
 fun Optional<*>.isAbsent() = !isPresent
 
+@Suppress("unused")
 fun <T> Optional<T>.toObservable(): Observable<T> =
     if (isPresent) Observable.just(get()) else Observable.empty<T>()
