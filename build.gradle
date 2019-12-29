@@ -29,7 +29,6 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$android_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath 'net.ltgt.gradle:gradle-errorprone-plugin:1.1.1'
     }
 }
@@ -41,7 +40,7 @@ repositories {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 apply plugin: 'kotlin-android'
 apply plugin: 'net.ltgt.errorprone'
 
@@ -77,30 +76,41 @@ android {
     buildFeatures {
         buildConfig false
     }
+
+    dependencies {
+        String archCompLifecycleVersion = '2.2.0-rc03'
+
+        errorprone 'com.google.errorprone:error_prone_core:2.3.4'
+        //noinspection GradleDynamicVersion
+        errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'
+
+        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.4'
+
+        implementation 'org.bubenheimer:androidutil:1.0-SNAPSHOT'
+        implementation 'org.bubenheimer:javautil:1.0-SNAPSHOT'
+
+        implementation 'androidx.core:core:1.2.0-rc01'
+
+        implementation "androidx.lifecycle:lifecycle-common-java8:$archCompLifecycleVersion"
+        implementation "androidx.lifecycle:lifecycle-reactivestreams:$archCompLifecycleVersion"
+
+        //Use api to make Scheduler super class available to users
+        api 'io.reactivex.rxjava2:rxjava:2.2.7'
+        implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+        testImplementation 'junit:junit:4.12'
+    }
 }
 
-dependencies {
-    String archCompLifecycleVersion = '2.2.0-rc03'
-
-    errorprone 'com.google.errorprone:error_prone_core:2.3.4'
-    //noinspection GradleDynamicVersion
-    errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'
-
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.4'
-
-    implementation 'org.bubenheimer:androidutil:1.0-SNAPSHOT'
-    implementation 'org.bubenheimer:javautil:1.0-SNAPSHOT'
-
-    implementation 'androidx.core:core:1.2.0-rc01'
-
-    implementation "androidx.lifecycle:lifecycle-common-java8:$archCompLifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-reactivestreams:$archCompLifecycleVersion"
-
-    //Use api to make Scheduler super class available to users
-    api 'io.reactivex.rxjava2:rxjava:2.2.7'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    testImplementation 'junit:junit:4.12'
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.release
+            }
+            artifactId = project.name
+        }
+    }
 }
