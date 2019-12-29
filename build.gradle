@@ -80,7 +80,7 @@ android {
 }
 
 dependencies {
-    String archCompLifecycleVersion = '2.1.0-alpha04'
+    String archCompLifecycleVersion = '2.2.0-rc03'
 
     errorprone 'com.google.errorprone:error_prone_core:2.3.4'
     //noinspection GradleDynamicVersion
@@ -91,7 +91,7 @@ dependencies {
     implementation 'org.bubenheimer:androidutil:1.0-SNAPSHOT'
     implementation 'org.bubenheimer:javautil:1.0-SNAPSHOT'
 
-    implementation 'androidx.core:core:1.1.0-alpha05'
+    implementation 'androidx.core:core:1.2.0-rc01'
 
     implementation "androidx.lifecycle:lifecycle-common-java8:$archCompLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$archCompLifecycleVersion"
