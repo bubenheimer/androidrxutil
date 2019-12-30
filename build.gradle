@@ -95,7 +95,7 @@ android {
         implementation "androidx.lifecycle:lifecycle-reactivestreams:$archCompLifecycleVersion"
 
         //Use api to make Scheduler super class available to users
-        api 'io.reactivex.rxjava2:rxjava:2.2.7'
+        api 'io.reactivex.rxjava2:rxjava:2.2.16'
         implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
