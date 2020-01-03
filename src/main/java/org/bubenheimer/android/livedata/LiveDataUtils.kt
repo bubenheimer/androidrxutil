@@ -58,11 +58,10 @@ fun <T> LiveData<T>.nonNull(): LiveData<T> {
 }
 
 @Suppress("unused")
-fun <T> LiveData<T>.withDefault(defaultValue: T) =
-        Transformations.distinctUntilChanged(object : MediatorLiveData<T>() {
+fun <T> LiveData<T>.withDefault(defaultValue: T) = object : MediatorLiveData<T>() {
     init {
         addSource(this@withDefault, this::setValue)
     }
 
     override fun getValue() = super.getValue() ?: defaultValue
-})
+}
