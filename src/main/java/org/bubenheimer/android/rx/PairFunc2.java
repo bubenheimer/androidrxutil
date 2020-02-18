@@ -19,7 +19,7 @@ package org.bubenheimer.android.rx;
 
 import androidx.core.util.Pair;
 
-import io.reactivex.functions.BiFunction;
+import io.reactivex.rxjava3.functions.BiFunction;
 
 public final class PairFunc2<T, U> implements BiFunction<T, U, Pair<T, U>> {
     @Override

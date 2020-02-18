@@ -17,7 +17,7 @@
 
 package org.bubenheimer.android.rx
 
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 /** Cheaper replacement for `SerialDisposable`. Methods are not thread-safe.  */
 class DisposableWrapper {

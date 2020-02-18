@@ -24,8 +24,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.BackpressureStrategy
+import io.reactivex.rxjava3.core.Observable
 import org.bubenheimer.android.threading.onMainThread
 import java.util.*
 

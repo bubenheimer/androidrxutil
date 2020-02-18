@@ -17,7 +17,7 @@
 
 package org.bubenheimer.android.rx;
 
-import io.reactivex.observers.DefaultObserver;
+import io.reactivex.rxjava3.observers.DefaultObserver;
 
 public abstract class DefaultsDefaultObserver<T> extends DefaultObserver<T>
         implements DefaultsObserver<T> {

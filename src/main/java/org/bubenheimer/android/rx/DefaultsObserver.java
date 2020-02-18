@@ -17,11 +17,11 @@
 
 package org.bubenheimer.android.rx;
 
-import io.reactivex.Observer;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.exceptions.OnErrorNotImplementedException;
-import io.reactivex.plugins.RxJavaPlugins;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.exceptions.OnErrorNotImplementedException;
+import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 
 public interface DefaultsObserver<T> extends Observer<T> {
     @Override

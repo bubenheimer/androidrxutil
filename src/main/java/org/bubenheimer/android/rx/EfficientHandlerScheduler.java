@@ -36,10 +36,9 @@ import android.os.Message;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Scheduler;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.disposables.Disposables;
-import io.reactivex.plugins.RxJavaPlugins;
+import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 
 public final class EfficientHandlerScheduler extends Scheduler {
     private final Handler handler;
@@ -79,7 +78,7 @@ public final class EfficientHandlerScheduler extends Scheduler {
             if (unit == null) throw new NullPointerException("unit == null");
 
             if (disposed) {
-                return Disposables.disposed();
+                return Disposable.disposed();
             }
 
             run = RxJavaPlugins.onSchedule(run);
@@ -91,7 +90,7 @@ public final class EfficientHandlerScheduler extends Scheduler {
                         handler.getLooper().isCurrentThread();
                 if (isCurrentThread) {
                     run.run();
-                    return Disposables.disposed();
+                    return Disposable.disposed();
                 }
             }
 
@@ -105,7 +104,7 @@ public final class EfficientHandlerScheduler extends Scheduler {
             // Re-check disposed state for removing in case we were racing a call to dispose().
             if (disposed) {
                 handler.removeCallbacks(scheduled);
-                return Disposables.disposed();
+                return Disposable.disposed();
             }
 
             return scheduled;
