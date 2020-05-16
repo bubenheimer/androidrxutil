@@ -26,7 +26,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Observable
-import org.bubenheimer.android.threading.onMainThread
+//import org.bubenheimer.android.threading.onMainThread
 import java.util.*
 
 @Suppress("unused")
@@ -38,7 +38,7 @@ fun <T> Observable<T>.toLiveData(): LiveData<T> =
 
 @MainThread
 fun <T> LiveData<T>.filter(predicate: (T?) -> Boolean): LiveData<T> {
-    check(onMainThread())
+//    check(onMainThread())
 
     val result = MediatorLiveData<T>()
     result.addSource(this) {
@@ -52,7 +52,7 @@ fun <T> LiveData<T>.filter(predicate: (T?) -> Boolean): LiveData<T> {
 @Suppress("unused")
 @MainThread
 fun <T> LiveData<T>.nonNull(): LiveData<T> {
-    check(onMainThread())
+//    check(onMainThread())
 
     return filter { it != null }
 }

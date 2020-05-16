@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2019 Uli Bubenheimer
+ * Copyright (c) 2015-2020 Uli Bubenheimer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 import net.ltgt.gradle.errorprone.CheckSeverity
 
 buildscript {
-    ext.android_plugin_version = '4.0.0-alpha09'
+    ext.android_plugin_version = '4.1.0-alpha09'
     ext.kotlin_version = '1.3.61'
 
     repositories {
@@ -84,7 +84,7 @@ android {
         //noinspection GradleDynamicVersion
         errorproneJavac 'com.google.errorprone:javac:9+181-r4173-1'
 
-        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.4'
+        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.5'
 
         implementation 'org.bubenheimer:androidutil:1.0-SNAPSHOT'
         implementation 'org.bubenheimer:javautil:1.0-SNAPSHOT'
@@ -95,10 +95,10 @@ android {
         implementation "androidx.lifecycle:lifecycle-reactivestreams:$archCompLifecycleVersion"
 
         //Use api to make Scheduler super class available to users
-        api 'io.reactivex.rxjava3:rxjava:3.0.0'
+        api 'io.reactivex.rxjava3:rxjava:3.0.3'
         implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
         testImplementation 'junit:junit:4.12'
     }
