@@ -14,34 +14,10 @@
  * limitations under the License.
  *
  */
+package org.bubenheimer.android.rx
 
-package org.bubenheimer.android.rx;
+import io.reactivex.rxjava3.disposables.Disposable
 
-import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.exceptions.OnErrorNotImplementedException;
-import io.reactivex.rxjava3.plugins.RxJavaPlugins;
-
-public interface DefaultsObserver<T> extends Observer<T> {
-    @Override
-    default void onSubscribe(
-            final @NonNull Disposable d
-    ) {};
-
-    @Override
-    default void onNext(
-            final @NonNull T t
-    ) {};
-
-    @Override
-    default void onError(
-            final @NonNull Throwable e
-    ) {
-        RxJavaPlugins.onError(new OnErrorNotImplementedException(e));
-    };
-
-    @Override
-    default void onComplete(
-    ) {};
+interface DefaultsObserver<T> : BaseDefaultsObserver<T> {
+    override fun onSubscribe(d: Disposable) {}
 }
