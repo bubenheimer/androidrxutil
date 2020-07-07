@@ -27,13 +27,16 @@ import androidx.lifecycle.toLiveData
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Observable
 import org.bubenheimer.android.Check
-import java.util.*
+import org.bubenheimer.android.Optional
+import org.bubenheimer.android.orElse
 
 @Suppress("unused")
-fun <T> Observable<Optional<T>>.toNullLiveData(): LiveData<T> = toLiveData().map { it.orElse(null) }
+fun <T> Observable<Optional<T>>.toNullLiveData(): LiveData<T?> {
+    return toLiveData().map { it.orElse(null) }
+}
 
 fun <T> Observable<T>.toLiveData(): LiveData<T> =
-        toFlowable(BackpressureStrategy.LATEST).toLiveData()
+    toFlowable(BackpressureStrategy.LATEST).toLiveData()
 
 @MainThread
 fun <T> LiveData<T>.filter(predicate: (T?) -> Boolean): LiveData<T> {
