@@ -21,17 +21,17 @@ import io.reactivex.rxjava3.disposables.Disposable
 import org.bubenheimer.android.Check
 
 /** Cheaper replacement for `SerialDisposable`. Methods are not thread-safe.  */
-class DisposableWrapper {
+public class DisposableWrapper {
     private var disposable: Disposable? = null
 
-    fun get() = disposable
+    public fun get(): Disposable? = disposable
 
-    fun set(disposable: Disposable) {
+    public fun set(disposable: Disposable) {
         Check.isNull(this.disposable)
         this.disposable = disposable
     }
 
-    fun clear() {
+    public fun clear() {
         disposable?.let {
             it.dispose()
             disposable = null

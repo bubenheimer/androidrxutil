@@ -18,6 +18,6 @@ package org.bubenheimer.android.rx
 
 import io.reactivex.rxjava3.disposables.Disposable
 
-interface DefaultsObserver<T> : BaseDefaultsObserver<T> {
+public interface DefaultsObserver<T> : BaseDefaultsObserver<T> {
     override fun onSubscribe(d: Disposable) {}
 }
