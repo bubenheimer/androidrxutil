@@ -83,14 +83,14 @@ android {
 
         implementation 'org.bubenheimer:javautil:1.0-SNAPSHOT'
 
-        implementation 'androidx.core:core:1.3.0'
+        implementation 'androidx.core:core:1.3.1'
 
         implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archCompLifecycleVersion"
         implementation "androidx.lifecycle:lifecycle-common-java8:$archCompLifecycleVersion"
         implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$archCompLifecycleVersion"
 
         //Use api to make Scheduler super class available to users
-        api 'io.reactivex.rxjava3:rxjava:3.0.4'
+        api 'io.reactivex.rxjava3:rxjava:3.0.6'
         implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
