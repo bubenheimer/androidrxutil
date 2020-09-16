@@ -21,7 +21,7 @@ import androidx.annotation.CheckResult
 import io.reactivex.rxjava3.core.Observable
 
 @CheckResult
-public fun <T> Optional<T>.toObservable(): Observable<T> = when (this) {
+public fun <T : Any> Optional<T>.toObservable(): Observable<out T> = when (this) {
     is Optional.Some -> Observable.just(value)
     is Optional.Empty -> Observable.empty()
 }

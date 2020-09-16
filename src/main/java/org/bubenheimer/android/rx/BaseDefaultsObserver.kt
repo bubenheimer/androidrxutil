@@ -20,10 +20,11 @@ import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.exceptions.OnErrorNotImplementedException
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 
-public interface BaseDefaultsObserver<T> : Observer<T> {
+public interface BaseDefaultsObserver<T : Any> : Observer<T> {
     override fun onNext(t: T) {}
     override fun onError(e: Throwable) {
         RxJavaPlugins.onError(OnErrorNotImplementedException(e))
     }
+
     override fun onComplete() {}
 }

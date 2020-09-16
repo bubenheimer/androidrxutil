@@ -31,15 +31,15 @@ import org.bubenheimer.android.Optional
 import org.bubenheimer.android.orElse
 
 @Suppress("unused")
-public fun <T> Observable<Optional<T>>.toNullLiveData(): LiveData<T?> {
+public fun <T : Any> Observable<Optional<T>>.toNullLiveData(): LiveData<T?> {
     return toLiveData().map { it.orElse(null) }
 }
 
-public fun <T> Observable<T>.toLiveData(): LiveData<T> =
+public fun <T : Any> Observable<T>.toLiveData(): LiveData<T> =
     toFlowable(BackpressureStrategy.LATEST).toLiveData()
 
 @MainThread
-public fun <T> LiveData<T>.filter(predicate: (T?) -> Boolean): LiveData<T> {
+public fun <T : Any> LiveData<out T>.filter(predicate: (T?) -> Boolean): LiveData<T> {
     Check.onMainThread()
 
     return MediatorLiveData<T>().apply {
@@ -49,14 +49,14 @@ public fun <T> LiveData<T>.filter(predicate: (T?) -> Boolean): LiveData<T> {
 
 @Suppress("unused")
 @MainThread
-public fun <T> LiveData<T>.nonNull(): LiveData<T> {
+public fun <T : Any> LiveData<out T>.nonNull(): LiveData<T> {
     Check.onMainThread()
 
     return filter { it != null }
 }
 
 @Suppress("unused")
-public fun <T> LiveData<T>.withDefault(defaultValue: T): LiveData<T> =
+public fun <T : Any> LiveData<out T>.withDefault(defaultValue: T): LiveData<T> =
     object : MediatorLiveData<T>() {
         init {
             addSource(this@withDefault, ::setValue)
