@@ -27,8 +27,8 @@ import androidx.lifecycle.toLiveData
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Observable
 import org.bubenheimer.android.Check
-import org.bubenheimer.android.Optional
-import org.bubenheimer.android.orElse
+import org.bubenheimer.util.Optional
+import org.bubenheimer.util.orElse
 
 @Suppress("unused")
 public fun <T : Any> Observable<Optional<T>>.toNullLiveData(): LiveData<T?> {

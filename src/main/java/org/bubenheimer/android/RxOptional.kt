@@ -19,6 +19,7 @@ package org.bubenheimer.android
 
 import androidx.annotation.CheckResult
 import io.reactivex.rxjava3.core.Observable
+import org.bubenheimer.util.Optional
 
 @CheckResult
 public fun <T : Any> Optional<T>.toObservable(): Observable<out T> = when (this) {
