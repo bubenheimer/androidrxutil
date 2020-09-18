@@ -26,7 +26,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.toLiveData
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Observable
-import org.bubenheimer.android.Check
+import org.bubenheimer.android.threading.examOnMainThread
 import org.bubenheimer.util.Optional
 import org.bubenheimer.util.orElse
 
@@ -40,7 +40,7 @@ public fun <T : Any> Observable<T>.toLiveData(): LiveData<T> =
 
 @MainThread
 public fun <T : Any> LiveData<out T>.filter(predicate: (T?) -> Boolean): LiveData<T> {
-    Check.onMainThread()
+    examOnMainThread()
 
     return MediatorLiveData<T>().apply {
         addSource(this@filter) { if (predicate(it)) value = it }
@@ -50,7 +50,7 @@ public fun <T : Any> LiveData<out T>.filter(predicate: (T?) -> Boolean): LiveDat
 @Suppress("unused")
 @MainThread
 public fun <T : Any> LiveData<out T>.nonNull(): LiveData<T> {
-    Check.onMainThread()
+    examOnMainThread()
 
     return filter { it != null }
 }
