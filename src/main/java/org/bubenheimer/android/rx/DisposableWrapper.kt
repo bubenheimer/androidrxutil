@@ -18,7 +18,7 @@
 package org.bubenheimer.android.rx
 
 import io.reactivex.rxjava3.disposables.Disposable
-import org.bubenheimer.android.Check
+import org.bubenheimer.util.examIsNull
 
 /** Cheaper replacement for `SerialDisposable`. Methods are not thread-safe.  */
 public class DisposableWrapper {
@@ -27,7 +27,7 @@ public class DisposableWrapper {
     public fun get(): Disposable? = disposable
 
     public fun set(disposable: Disposable) {
-        Check.isNull(this.disposable)
+        examIsNull(this.disposable)
         this.disposable = disposable
     }
 
