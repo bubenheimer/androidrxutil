@@ -82,8 +82,6 @@ android {
         debugImplementation 'org.bubenheimer:androidutil-debug:1.0-SNAPSHOT'
         releaseImplementation 'org.bubenheimer:androidutil-release:1.0-SNAPSHOT'
 
-        implementation 'org.bubenheimer:javautil:1.0-SNAPSHOT'
-
         implementation 'org.bubenheimer:kotlinutil:1.0-SNAPSHOT'
 
         implementation 'androidx.core:core:1.3.1'
