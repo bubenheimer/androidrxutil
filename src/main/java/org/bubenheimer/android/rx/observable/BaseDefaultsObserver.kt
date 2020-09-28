@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2019 Uli Bubenheimer
+ * Copyright (c) 2015-2020 Uli Bubenheimer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,16 @@
  * limitations under the License.
  *
  */
-package org.bubenheimer.android.rx
+package org.bubenheimer.android.rx.observable
 
-import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.exceptions.OnErrorNotImplementedException
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
 
-public interface DefaultsObserver<T : Any> : BaseDefaultsObserver<T> {
-    override fun onSubscribe(d: Disposable) {}
+public interface BaseDefaultsObserver<T : Any> : Observer<T> {
+    override fun onError(e: Throwable) {
+        RxJavaPlugins.onError(OnErrorNotImplementedException(e))
+    }
+
+    override fun onComplete() {}
 }
