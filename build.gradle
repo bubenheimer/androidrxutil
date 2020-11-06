@@ -68,6 +68,7 @@ android {
         freeCompilerArgs = [
                 "-progressive",
                 "-Xexplicit-api=strict",
+                "-Xjvm-default=all",
                 "-Xopt-in=kotlin.contracts.ExperimentalContracts"
         ]
     }
