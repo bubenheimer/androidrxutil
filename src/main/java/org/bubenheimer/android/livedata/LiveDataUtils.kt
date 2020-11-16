@@ -28,12 +28,10 @@ import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Observable
 import org.bubenheimer.android.threading.examOnMainThread
 import org.bubenheimer.util.Optional
-import org.bubenheimer.util.orElse
 
 @Suppress("unused")
-public fun <T : Any> Observable<Optional<T>>.toNullLiveData(): LiveData<T?> {
-    return toLiveData().map { it.orElse(null) }
-}
+public fun <T : Any> Observable<Optional<T>>.toNullLiveData(): LiveData<T?> =
+    toLiveData().map { it.getOrNull() }
 
 public fun <T : Any> Observable<T>.toLiveData(): LiveData<T> =
     toFlowable(BackpressureStrategy.LATEST).toLiveData()

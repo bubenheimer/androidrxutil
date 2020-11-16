@@ -22,7 +22,5 @@ import io.reactivex.rxjava3.core.Observable
 import org.bubenheimer.util.Optional
 
 @CheckResult
-public fun <T : Any> Optional<T>.toObservable(): Observable<out T> = when (this) {
-    is Optional.Some -> Observable.just(value)
-    is Optional.Empty -> Observable.empty()
-}
+public fun <T : Any> Optional<T>.toObservable(): Observable<out T> =
+    getOrNull()?.let { Observable.just(it) } ?: Observable.empty()
