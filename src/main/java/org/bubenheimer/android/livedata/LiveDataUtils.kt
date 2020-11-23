@@ -30,7 +30,7 @@ import org.bubenheimer.android.threading.examOnMainThread
 import org.bubenheimer.util.Optional
 
 @Suppress("unused")
-public fun <T : Any> Observable<Optional<T>>.toNullLiveData(): LiveData<T?> =
+public fun <T : Any> Observable<out Optional<T>>.toNullLiveData(): LiveData<T?> =
     toLiveData().map { it.getOrNull() }
 
 public fun <T : Any> Observable<T>.toLiveData(): LiveData<T> =
@@ -54,7 +54,7 @@ public fun <T : Any> LiveData<out T>.nonNull(): LiveData<T> {
 }
 
 @Suppress("unused")
-public fun <T : Any> LiveData<out T>.withDefault(defaultValue: T): LiveData<T> =
+public fun <T> LiveData<out T>.withDefault(defaultValue: T): LiveData<T> =
     object : MediatorLiveData<T>() {
         init {
             addSource(this@withDefault, ::setValue)
