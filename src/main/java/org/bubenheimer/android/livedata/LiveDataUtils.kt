@@ -28,6 +28,7 @@ import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Observable
 import org.bubenheimer.android.threading.examOnMainThread
 import org.bubenheimer.util.Optional
+import org.bubenheimer.util.examIsFalse
 
 @Suppress("unused")
 public fun <T : Any> Observable<out Optional<T>>.toNullLiveData(): LiveData<T?> =
@@ -54,11 +55,35 @@ public fun <T : Any> LiveData<out T>.nonNull(): LiveData<T> {
 }
 
 @Suppress("unused")
-public fun <T> LiveData<out T>.withDefault(defaultValue: T): LiveData<T> =
+public fun <T : Any> LiveData<out T>.withDefault(defaultValue: T): LiveData<T> =
     object : MediatorLiveData<T>() {
         init {
             addSource(this@withDefault, ::setValue)
         }
 
         override fun getValue() = super.getValue() ?: defaultValue
+    }
+
+@Suppress("unused")
+public fun <T : Any> LiveData<out T?>.withNullableDefault(defaultValue: T?): LiveData<T?> =
+    object : MediatorLiveData<T>() {
+        @Volatile
+        private var isInitialized = false
+
+        init {
+            // Performance optimization: reduce volatile access; use only from main thread
+            var mainIsInitialized = false
+
+            addSource(this@withNullableDefault) {
+                examOnMainThread()
+                value = it
+                if (!mainIsInitialized) {
+                    examIsFalse(isInitialized)
+                    isInitialized = true
+                    mainIsInitialized = true
+                }
+            }
+        }
+
+        override fun getValue() = super.getValue() ?: defaultValue.takeUnless { isInitialized }
     }
